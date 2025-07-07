@@ -1,3 +1,4 @@
+import converterMdParaHTML from './core/converterMdParaHTML'
 import getMyMd from './core/getMyMd'
 import './global.css'
 
@@ -5,6 +6,8 @@ const url: string = 'https://raw.githubusercontent.com/WallaceBarrosDev/segundo_
 const file: string = 'Tratamento de erros.md'
 
 const markdown = await getMyMd(url, file)
-const textContent = document.querySelector(".text_content") as HTMLElement;
+const html = await converterMdParaHTML(markdown)
 
-textContent.textContent = markdown
+const div = document.querySelector(".text_content") as HTMLElement
+div.innerHTML = html
+
